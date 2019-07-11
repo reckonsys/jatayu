@@ -6,21 +6,12 @@ import sys
 from flask import Flask, render_template
 
 from cerberus import commands, public, user
-from cerberus.extensions import (
-    bcrypt,
-    cache,
-    csrf_protect,
-    db,
-    debug_toolbar,
-    login_manager,
-    migrate,
-    webpack,
-)
+from cerberus.extensions import cors
 
 
 def create_app(config_object="cerberus.settings"):
-    """Create application factory, as explained here: http://flask.pocoo.org/docs/patterns/appfactories/.
-
+    """Create application factory, as explained here:
+    http://flask.pocoo.org/docs/patterns/appfactories/.
     :param config_object: The configuration object to use.
     """
     app = Flask(__name__.split(".")[0])
@@ -36,14 +27,7 @@ def create_app(config_object="cerberus.settings"):
 
 def register_extensions(app):
     """Register Flask extensions."""
-    bcrypt.init_app(app)
-    cache.init_app(app)
-    db.init_app(app)
-    csrf_protect.init_app(app)
-    login_manager.init_app(app)
-    debug_toolbar.init_app(app)
-    migrate.init_app(app, db)
-    webpack.init_app(app)
+    cors.init_app(app)
     return None
 
 
@@ -73,7 +57,7 @@ def register_shellcontext(app):
 
     def shell_context():
         """Shell context objects."""
-        return {"db": db, "User": user.models.User}
+        # return {"db": db, "User": user.models.User}
 
     app.shell_context_processor(shell_context)
 
