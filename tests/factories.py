@@ -3,8 +3,8 @@
 from factory import PostGenerationMethodCall, Sequence
 from factory.alchemy import SQLAlchemyModelFactory
 
-from cerberus.database import db
-from cerberus.user.models import User
+from jatayu.database import db
+from jatayu.user.models import User
 
 
 class BaseFactory(SQLAlchemyModelFactory):

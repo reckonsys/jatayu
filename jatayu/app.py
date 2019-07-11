@@ -5,11 +5,11 @@ import sys
 
 from flask import Flask, render_template
 
-from cerberus import commands, public, user
-from cerberus.extensions import cors
+from jatayu import commands, public, user
+from jatayu.extensions import cors
 
 
-def create_app(config_object="cerberus.settings"):
+def create_app(config_object="jatayu.settings"):
     """Create application factory, as explained here:
     http://flask.pocoo.org/docs/patterns/appfactories/.
     :param config_object: The configuration object to use.

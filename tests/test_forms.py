@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Test forms."""
 
-from cerberus.public.forms import LoginForm
-from cerberus.user.forms import RegisterForm
+from jatayu.public.forms import LoginForm
+from jatayu.user.forms import RegisterForm
 
 
 class TestRegisterForm:

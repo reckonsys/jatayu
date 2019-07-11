@@ -4,8 +4,8 @@
 import pytest
 from webtest import TestApp
 
-from cerberus.app import create_app
-from cerberus.database import db as _db
+from jatayu.app import create_app
+from jatayu.database import db as _db
 
 from .factories import UserFactory
 

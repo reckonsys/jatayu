@@ -11,11 +11,11 @@ from flask import (
 )
 from flask_login import login_required, login_user, logout_user
 
-from cerberus.extensions import login_manager
-from cerberus.public.forms import LoginForm
-from cerberus.user.forms import RegisterForm
-from cerberus.user.models import User
-from cerberus.utils import flash_errors
+from jatayu.extensions import login_manager
+from jatayu.public.forms import LoginForm
+from jatayu.user.forms import RegisterForm
+from jatayu.user.models import User
+from jatayu.utils import flash_errors
 
 blueprint = Blueprint("public", __name__, static_folder="../static")
 

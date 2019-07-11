@@ -1,12 +1,12 @@
 import asyncio
 import asyncpg
 
-from cerberus.orm.postgresql import PostgreSQL
+from jatayu.orm.postgresql import PostgreSQL
 
 
 async def run():
     connection = await asyncpg.connect(
-        user='cerberus', password='cerberus', database='cerberus',
+        user='jatayu', password='jatayu', database='jatayu',
         host='127.0.0.1')
     pg = PostgreSQL(connection)
     values = await pg.create_extension_uuid_ossp()

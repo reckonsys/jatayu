@@ -10,6 +10,8 @@ python_version = "3.7"
 neovim = "*"
 ipdb = "*"
 ipython = "*"
+twine = "*"
+bumpversion = "*"
 
 [packages]
 sanic = "*"

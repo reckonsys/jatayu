@@ -4,7 +4,7 @@ import datetime as dt
 
 import pytest
 
-from cerberus.user.models import Role, User
+from jatayu.user.models import Role, User
 
 from .factories import UserFactory
 

@@ -2,7 +2,7 @@
 """User models."""
 import datetime as dt
 
-from cerberus.database import (
+from jatayu.database import (
     Column,
     Model,
     SurrogatePK,
@@ -10,7 +10,7 @@ from cerberus.database import (
     reference_col,
     relationship,
 )
-from cerberus.extensions import bcrypt
+from jatayu.extensions import bcrypt
 
 
 class Role(SurrogatePK, Model):
