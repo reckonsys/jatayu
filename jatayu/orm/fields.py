@@ -4,7 +4,7 @@ from dataclasses import MISSING, Field as _Field
 
 https://magicstack.github.io/asyncpg/current/usage.html#type-conversion
 
-anyarrar                       | list
+anyarray                       | list
 anyenum                        | str
 anyrange                       | asyncpg.Range
 record                         | asyncpg.Record, tuple, Mapping
@@ -37,13 +37,61 @@ uuid                           | uuid.UUID
 tid                            | tuple
 '''
 
+'''
+bigint (int8)
+bigserial 	serial8
+bit [ (n) ]
+bit varying [ (n) ] 	varbit [ (n) ]
+boolean 	bool
+box
+bytea
+character [ (n) ] 	char [ (n) ]
+character varying [ (n) ] 	varchar [ (n) ]
+cidr
+circle
+date
+double precision 	float8
+inet
+integer 	int, int4
+interval [ fields ] [ (p) ]
+json
+jsonb
+line
+lseg
+macaddr
+macaddr8
+money
+numeric [ (p, s) ] 	decimal [ (p, s) ]
+path
+pg_lsn
+point
+polygon
+real 	float4
+smallint 	int2
+smallserial 	serial2
+serial 	serial4
+text
+time [ (p) ] [ without time zone ]
+time [ (p) ] with time zone 	timetz
+timestamp [ (p) ] [ without time zone ]
+timestamp [ (p) ] with time zone 	timestamptz
+tsquery
+tsvector
+txid_snapshot
+uuid
+xml
+'''
+
 
 class Field(_Field):
     """A custom field definition."""
 
+    py_type = str
+    pg_type = 'TEXT'
+
     def __init__(
             self, default=MISSING, default_factory=MISSING, init=True,
-            repr=True, hash=None, compare=True, pg_field='TEXT'):
+            repr=True, hash=None, compare=True):
         # It is an error to specify both default and default_factory.
         if default is not MISSING and default_factory is not MISSING:
             raise ValueError('cannot specify both default and default_factory')
