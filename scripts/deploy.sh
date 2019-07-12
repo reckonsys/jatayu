@@ -5,6 +5,8 @@
 # To deploy minor version `./scripts/deploy.sh minor`
 # To deploy major version `./scripts/deploy.sh major`
 
+set -xeuo pipefail
+
 BUMP_VERSION=$1
 if [ "$BUMP_VERSION" = "" ]
 then
