@@ -1,3 +1,10 @@
+#!/bin/sh
+
+# Usage:
+# `./scripts/deploy.sh`  is same as `./scripts/deploy.sh patch`
+# To deploy minor version `./scripts/deploy.sh minor`
+# To deploy major version `./scripts/deploy.sh major`
+
 BUMP_VERSION=$1
 if [ "$BUMP_VERSION" = "" ]
 then
