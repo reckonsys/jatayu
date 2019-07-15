@@ -37,57 +37,12 @@ uuid                           | uuid.UUID
 tid                            | tuple
 '''
 
-'''
-bigint (int8)
-bigserial 	serial8
-bit [ (n) ]
-bit varying [ (n) ] 	varbit [ (n) ]
-boolean 	bool
-box
-bytea
-character [ (n) ] 	char [ (n) ]
-character varying [ (n) ] 	varchar [ (n) ]
-cidr
-circle
-date
-double precision 	float8
-inet
-integer 	int, int4
-interval [ fields ] [ (p) ]
-json
-jsonb
-line
-lseg
-macaddr
-macaddr8
-money
-numeric [ (p, s) ] 	decimal [ (p, s) ]
-path
-pg_lsn
-point
-polygon
-real 	float4
-smallint 	int2
-smallserial 	serial2
-serial 	serial4
-text
-time [ (p) ] [ without time zone ]
-time [ (p) ] with time zone 	timetz
-timestamp [ (p) ] [ without time zone ]
-timestamp [ (p) ] with time zone 	timestamptz
-tsquery
-tsvector
-txid_snapshot
-uuid
-xml
-'''
-
 
 class Field(_Field):
     """A custom field definition."""
 
-    py_type = str
-    pg_type = 'TEXT'
+    py_type: type = str
+    pg_type: str = 'TEXT'
 
     def __init__(
             self, default=MISSING, default_factory=MISSING, init=True,
@@ -95,9 +50,63 @@ class Field(_Field):
         # It is an error to specify both default and default_factory.
         if default is not MISSING and default_factory is not MISSING:
             raise ValueError('cannot specify both default and default_factory')
+        if default is MISSING and default_factory is MISSING:
+            default = self.py_type()
         super(Field, self).__init__(
-            default, default_factory, init, repr, hash, compare)
+            default, default_factory, init, repr, hash, compare, None)
+
+
+class BigIntField(Field):
+
+    py_type: type = int
+    pg_type: str = 'BIGINT'
 
 
 class CharField(Field):
-    pass
+
+    py_type: type = str
+    pg_type: str = 'CHAR'
+
+
+'''
+bigserial # serial
+bit  # [ (n) ]
+varbit  # [ (n) ]
+boolean  # bool
+box
+bytea
+varchar  # [ (n) ]
+cidr
+circle
+date
+double  # precision float8
+inet
+integer  # int, int4
+interval  # [ fields ] [ (p) ]
+json
+jsonb
+line
+lseg
+macaddr
+macaddr8
+money
+numeric  # [ (p, s) ] 	decimal [ (p, s) ]
+path
+pg_lsn
+point
+polygon
+real  # float4
+smallint  # int2
+smallserial  # serial2
+serial  # serial4
+text
+time
+timetz
+timestamp
+timestamptz
+tsquery
+tsvector
+txid_snapshot
+uuid
+xml
+'''
