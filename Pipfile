@@ -12,8 +12,10 @@ ipdb = "*"
 ipython = "*"
 twine = "*"
 bumpversion = "*"
+jatayu = {editable = true,path = "."}
 
 [packages]
 sanic = "*"
 rsutils = "*"
 asyncpg = "*"
+inflection = "*"

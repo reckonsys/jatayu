@@ -39,33 +39,41 @@ tid                            | tuple
 
 
 class Field(_Field):
-    """A custom field definition."""
+    '''A custom field definition.'''
 
-    py_type: type = str
-    pg_type: str = 'TEXT'
+    py_type = str
+    pg_type = 'TEXT'
 
     def __init__(
             self, default=MISSING, default_factory=MISSING, init=True,
             repr=True, hash=None, compare=True):
+        # init=True because of the warning:
+        # It is expected that init=False fields will be rarely and judiciously used  # noqa
+        # https://docs.python.org/3/library/dataclasses.html#dataclasses.replace  # noqa
+
         # It is an error to specify both default and default_factory.
+        # https://github.com/python/cpython/blob/2d88e63bfcf7bccba925ab80b3f47ccf8b7aefa8/Lib/dataclasses.py#L331  # noqa
         if default is not MISSING and default_factory is not MISSING:
             raise ValueError('cannot specify both default and default_factory')
         if default is MISSING and default_factory is MISSING:
             default = self.py_type()
+        metadata = {'py_type': self.py_type, 'pg_type': self.pg_type}
         super(Field, self).__init__(
-            default, default_factory, init, repr, hash, compare, None)
+            default, default_factory, init, repr, hash, compare, metadata)
+
+    @property
+    def sql_def(self) -> str:
+        return f'"{self.name}" {self.pg_type}'
 
 
 class BigIntField(Field):
-
-    py_type: type = int
-    pg_type: str = 'BIGINT'
+    py_type = int
+    pg_type = 'BIGINT'
 
 
 class CharField(Field):
-
-    py_type: type = str
-    pg_type: str = 'CHAR'
+    py_type = str
+    pg_type = 'CHAR'
 
 
 '''
