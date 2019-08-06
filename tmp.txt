@@ -1,0 +1,7 @@
+null, unique, pk, default
+
+insert / update / delete
+
+truncate
+
+foreign key
