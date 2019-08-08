@@ -17,5 +17,4 @@ jatayu = {editable = true,path = "."}
 [packages]
 sanic = "*"
 rsutils = "*"
-asyncpg = "*"
-inflection = "*"
+pgorm = {editable = true,path = "./../pgorm"}

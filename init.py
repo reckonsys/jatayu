@@ -1,7 +1,7 @@
 import asyncio
 import asyncpg
 
-from jatayu.orm.postgresql import PostgreSQL
+from pgorm.postgresql import PostgreSQL
 from jatayu.user.models import User
 
 
