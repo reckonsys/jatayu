@@ -10,7 +10,7 @@ async def run():
         user='jatayu', password='jatayu', database='jatayu', host='127.0.0.1')
     pg = PostgreSQL(connection)
     values = await pg.create_extension_uuid_ossp()
-    foo = await pg.create_table(User)
+    foo = await pg.create(User)
     print(values, foo)
     await connection.close()
 
