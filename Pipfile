@@ -13,8 +13,11 @@ ipython = "*"
 twine = "*"
 bumpversion = "*"
 jatayu = {editable = true,path = "."}
+dracula = "*"
 
 [packages]
 sanic = "*"
 rsutils = "*"
 pgorm = {editable = true,path = "./../pgorm"}
+pygments = "*"
+dracula = "*"
